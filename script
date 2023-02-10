@@ -1,0 +1,30 @@
+clear() // clear the output window
+print(Date())
+Spectrum1.Frequency.Stop.value=20000
+Spectrum1.Frequency.Start.value=30
+Spectrum1.Frequency.Scale.text='Logarithmic'
+Spectrum1.Frequency.Algorithm.text='FFT'
+Spectrum1.Trace1.checked=1
+Spectrum1.Trace2.checked=0
+Spectrum1.Trace3.checked=0
+Spectrum1.Trace4.checked=0
+Spectrum1.Trace1.Window.value = 3 // Hanning window
+Spectrum1.Trace1.Type.value = 8 // Exponential dB average
+Spectrum1.Trace1.Weight.value = 50 // weight/count 50
+Spectrum1.Magnitude.Top.value=0 // 0dB
+Spectrum1.Magnitude.Bottom.value=-100 // -100dB
+Spectrum1.Magnitude.Units.value=4 // RMSdB
+Spectrum1.Magnitude.Reference.value=1 // 1Volt reference
+print("Fundamental: " + Spectrum1.Trace1.measureFreq("FF")+" Hz") // fundamental frequency
+print(Spectrum1.Trace1.measure("FF")+" dBV") // magnitude
+//Spectrum1.State.Update.text='1000 ms'
+Spectrum1.State.Update.text='fastest'
+Spectrum1.run()
+//while (true) {
+    print("THD:" + Spectrum1.Trace1.measure("THD")+" dBc") // total harmonic distortion
+    print("THD:" + Spectrum1.Trace1.measure("THDp")+" %") // total harmonic distortion
+    print("THDN:" + Spectrum1.Trace1.measure("THDN")+" dBc") // total harmonic distortion N
+    print("THDN:" + Spectrum1.Trace1.measure("THDNp")+" %") // total harmonic distortion N
+//    wait(2)
+//    clear()
+//}
